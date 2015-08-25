@@ -1,0 +1,23 @@
+Próximos Passos
+
+1 - Métodos dos Links e OXC de redes elásticas
+2 - 
+
+------------------------------------------------------------------------------------------------------
+Perguntas a serem feitas
+
+1 - Nos parâmetros grooming-in-ports e grooming-out-ports podemos suprimir o "grooming"?
+2 - Podemos abreviar os parâmetros? Ex.: source -> src
+
+------------------------------------------------------------------------------------------------------
+
+1 - A criação de um lightpath estará mediante ao formato da modulação (Checar artigo ;
+2 - 
+
+-----------------------------------------------
+A receber
+
+1 - Cálculo da modulação, distância e slots -> qual modulação usar para cada distância, calculando o tamanho
+do slot para cada uma
+
+2 - 

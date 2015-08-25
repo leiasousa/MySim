@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<root>
+    <eonsim version="0.3">
+    <raforBDT module="UnicastRMLSA"/> 
+    <trace file="trace.tr"/>
+    
+    <traffic calls="10000" arrivalRate="100">
+        
+        <!-- Estou usando semânticas diferentes aqui... type=1 para chamadas BDT e type=2 para Batch-->
+        
+        
+        <calls dataAmount="10" deadline="10" weight="1" type="1"/>
+        <calls dataAmount="30" deadline="10" weight="1" type="1"/>
+        <calls dataAmount="50" deadline="10" weight="1" type="1"/>
+        <calls dataAmount="70" deadline="10" weight="1" type="1"/>
+        <calls dataAmount="90" deadline="10" weight="1" type="1"/>
+        <calls dataAmount="110" deadline="10" weight="1" type="1"/>
+        <calls dataAmount="130" deadline="10" weight="1" type="1"/>
+        <calls dataAmount="150" deadline="10" weight="1" type="1"/>
+        
+        <calls sources="3" dataAmount="100" delta="50" deadline="10" weight="1" type="2"/>
+        <calls sources="4" dataAmount="100" delta="50" deadline="10" weight="1" type="2"/>
+        <calls sources="5" dataAmount="100" delta="50" deadline="10" weight="1" type="2"/>
+        
+    </traffic>
+    
+     <!-- Topology of USA network
+      Fonte: Yong Ouyang, Qingji Zeng, Wei Wei, "Dynamic lightpath provisioning with signal quality guarantees 
+      in survivable translucent optical networks," Opt. Express 13, 10457-10468 (2005);
+      http://www.opticsinfobase.org/oe/abstract.cfm?URI=oe-13-26-10457    -->  
+      
+      
+      <!-- Link weigth = distance in Km
+             Link delay = 1ms for 200Km -->
+     
+     
+        <links slots="400" guardband="2">
+            
+            <!-- Seattle(WA) = 0 and Portland(OR) = 1; GODC1 = The Dalles, OR  -->
+            <link id="0" source="0" destination="1" delay="4" slots="400" weight="800"/>
+            <link id="1" source="1" destination="0" delay="4" slots="400" weight="800"/>
+            
+            <link id="2" source="0" destination="5" delay="5" slots="400" weight="1000"/>
+            <link id="3" source="5" destination="0" delay="5" slots="400" weight="1000"/>
+            
+            <link id="4" source="1" destination="5" delay="4.75" slots="400" weight="950"/>
+            <link id="5" source="5" destination="1" delay="4.75" slots="400" weight="950"/>
+            
+            <link id="6" source="1" destination="2" delay="5.5" slots="400" weight="1100"/>
+            <link id="7" source="2" destination="1" delay="5.5" slots="400" weight="1100"/>
+                        
+            <link id="8" source="2" destination="6" delay="5" slots="400" weight="1000"/>
+            <link id="9" source="6" destination="2" delay="5" slots="400" weight="1000"/>
+            
+            <link id="10" source="6" destination="5" delay="5" slots="400" weight="1000"/>
+            <link id="11" source="5" destination="6" delay="5" slots="400" weight="1000"/>
+            
+            <link id="12" source="3" destination="2" delay="1.25" slots="400" weight="250"/>
+            <link id="13" source="2" destination="3" delay="1.25" slots="400" weight="250"/>
+            
+            <link id="14" source="3" destination="6" delay="4.25" slots="400" weight="850"/>
+            <link id="15" source="6" destination="3" delay="4.25" slots="400" weight="850"/>
+            
+            <link id="16" source="4" destination="2" delay="5" slots="400" weight="1000"/>
+            <link id="17" source="2" destination="4" delay="5" slots="400" weight="1000"/>
+                        
+            <link id="18" source="4" destination="3" delay="4" slots="400" weight="800"/>
+            <link id="19" source="3" destination="4" delay="4" slots="400" weight="800"/>
+                        
+            <link id="20" source="4" destination="7" delay="6" slots="400" weight="1200"/>
+            <link id="21" source="7" destination="4" delay="6" slots="400" weight="1200"/>
+            
+            <link id="22" source="6" destination="7" delay="5.75" slots="400" weight="1150"/>
+            <link id="23" source="7" destination="6" delay="5.75" slots="400" weight="1150"/>
+                        
+            <link id="24" source="6" destination="8" delay="5" slots="400" weight="1000"/>
+            <link id="25" source="8" destination="6" delay="5" slots="400" weight="1000"/>
+            
+            <link id="26" source="7" destination="9" delay="4.5" slots="400" weight="900"/>
+            <link id="27" source="9" destination="7" delay="4.5" slots="400" weight="900"/>
+            
+            <link id="28" source="8" destination="5" delay="6" slots="400" weight="1200"/>
+            <link id="29" source="5" destination="8" delay="6" slots="400" weight="1200"/>
+            
+            <link id="30" source="8" destination="10" delay="3" slots="400" weight="1400"/>
+            <link id="31" source="10" destination="8" delay="3" slots="400" weight="1400"/>
+            
+            <link id="32" source="5" destination="10" delay="9.5" slots="400" weight="1900"/>
+            <link id="33" source="10" destination="5" delay="9.5" slots="400" weight="1900"/>
+            
+            <link id="34" source="8" destination="9" delay="4.5" slots="400" weight="900"/>
+            <link id="35" source="9" destination="8" delay="4.5" slots="400" weight="900"/>
+            
+            <link id="36" source="9" destination="13" delay="4.25" slots="400" weight="850"/>
+            <link id="37" source="13" destination="9" delay="4.25" slots="400" weight="850"/>
+            
+            <link id="38" source="9" destination="12" delay="4.75" slots="400" weight="950"/>
+            <link id="39" source="12" destination="9" delay="4.75" slots="400" weight="950"/>
+            
+            <link id="40" source="13" destination="12" delay="3.25" slots="400" weight="650"/>
+            <link id="41" source="12" destination="13" delay="3.25" slots="400" weight="650"/>
+            
+            <link id="42" source="11" destination="12" delay="4.5" slots="400" weight="900"/>
+            <link id="43" source="12" destination="11" delay="4.5" slots="400" weight="900"/>
+            
+            <link id="44" source="8" destination="11" delay="5" slots="400" weight="1000"/>
+            <link id="45" source="11" destination="8" delay="5" slots="400" weight="1000"/>
+            
+            <link id="46" source="10" destination="11" delay="4.5" slots="400" weight="900"/>
+            <link id="47" source="11" destination="10" delay="4.5" slots="400" weight="900"/>
+                        
+            <link id="48" source="10" destination="18" delay="13" slots="400" weight="2600"/>
+            <link id="49" source="18" destination="10" delay="13" slots="400" weight="2600"/>
+            
+            <link id="50" source="10" destination="14" delay="6.5" slots="400" weight="1300"/>
+            <link id="51" source="14" destination="10" delay="6.5" slots="400" weight="1300"/>
+            
+            <link id="52" source="14" destination="15" delay="3.25" slots="400" weight="650"/>
+            <link id="53" source="15" destination="14" delay="3.25" slots="400" weight="650"/>
+            
+            <link id="54" source="11" destination="15" delay="5" slots="400" weight="1000"/>
+            <link id="55" source="15" destination="11" delay="5" slots="400" weight="1000"/>
+            
+            <link id="56" source="15" destination="16" delay="5" slots="400" weight="1000"/>
+            <link id="57" source="16" destination="15" delay="5" slots="400" weight="1000"/>
+            
+            <link id="58" source="12" destination="16" delay="5.5" slots="400" weight="1100"/>
+            <link id="59" source="16" destination="12" delay="5.5" slots="400" weight="1100"/>
+            
+            <link id="60" source="16" destination="17" delay="4" slots="400" weight="800"/>
+            <link id="61" source="17" destination="16" delay="4" slots="400" weight="800"/>
+            
+            <link id="62" source="13" destination="17" delay="6" slots="400" weight="1200"/>
+            <link id="63" source="17" destination="13" delay="6" slots="400" weight="1200"/>
+                       
+            <link id="64" source="19" destination="18" delay="6" slots="400" weight="1200"/>
+            <link id="65" source="18" destination="19" delay="6" slots="400" weight="1200"/>
+            
+            <link id="66" source="14" destination="19" delay="6.5" slots="400" weight="1300"/>
+            <link id="67" source="19" destination="14" delay="6.5" slots="400" weight="1300"/>
+            
+            <link id="68" source="19" destination="20" delay="3.5" slots="400" weight="700"/>
+            <link id="69" source="20" destination="19" delay="3.5" slots="400" weight="700"/>
+            
+            <link id="70" source="15" destination="20" delay="5" slots="400" weight="1000"/>
+            <link id="71" source="20" destination="15" delay="5" slots="400" weight="1000"/>
+            
+            <link id="72" source="20" destination="21" delay="1.5" slots="400" weight="300"/>
+            <link id="73" source="21" destination="20" delay="1.5" slots="400" weight="300"/>
+            
+            <link id="74" source="15" destination="21" delay="4" slots="400" weight="800"/>
+            <link id="75" source="21" destination="15" delay="4" slots="400" weight="800"/>
+            
+            <link id="76" source="16" destination="21" delay="4.25" slots="400" weight="850"/>
+            <link id="77" source="21" destination="16" delay="4.25" slots="400" weight="850"/>
+            
+             <!--Ponto de conex�o com PanEuropean-->
+            <link id="78" source="22" destination="21" delay="3" slots="400" weight="600"/>
+            <link id="79" source="21" destination="22" delay="3" slots="400" weight="600"/>
+            
+            <link id="80" source="16" destination="22" delay="5" slots="400" weight="1000"/>
+            <link id="81" source="22" destination="16" delay="5" slots="400" weight="1000"/>
+            
+             <!--Ponto de conex�o com PanEuropean-->
+            <link id="82" source="22" destination="23" delay="4.5" slots="400" weight="900"/>
+            <link id="83" source="23" destination="22" delay="4.5" slots="400" weight="900"/>
+            
+            <link id="84" source="17" destination="23" delay="4.5" slots="400" weight="900"/>
+            <link id="85" source="23" destination="17" delay="4.5" slots="400" weight="900"/>
+            
+            
+            <!-- Topologia Pan-European:
+            CHEN, Xiaomin et al. A multipath routing mechanism in optical networks with extremely 
+            high bandwidth requests. In: Global Telecommunications Conference, 2009. GLOBECOM 2009. 
+            IEEE. IEEE, 2009. p. 1-6.
+            
+            http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=5425967&url=http%3A%2F%2Fieeexplo
+            re.ieee.org%2Fiel5%2F5425207%2F5425208%2F05425967.pdf%3Farnumber%3D5425967
+            -->
+            
+                 <!--Ponto de conex�o com US-->     
+            <link id="86" source="22" destination="24" delay="4.17" weight="834"/>
+            <link id="87" source="24" destination="22" delay="4.17" weight="834"/>
+                 <!--Ponto de conex�o com US-->
+            <link id="88" source="22" destination="25" delay="3.8" weight="760"/>
+            <link id="89" source="25" destination="22" delay="3.8" weight="760"/>
+            
+            
+            <link id="90" source="31" destination="30" delay="2.31" weight="462"/>
+            <link id="91" source="30" destination="31" delay="2.31" weight="462"/>
+            
+            <link id="92" source="30" destination="32" delay="3.45" weight="690"/>
+            <link id="93" source="32" destination="30" delay="3.45" weight="690"/>
+            
+            <link id="94" source="24" destination="26" delay="3.735" weight="747"/>
+            <link id="95" source="26" destination="24" delay="3.735" weight="747"/>
+            
+            <link id="96" source="31" destination="29" delay="5.335" weight="1067"/>
+            <link id="97" source="29" destination="31" delay="5.335" weight="1067"/>
+            
+            <link id="98" source="32" destination="26" delay="2.57" weight="514"/>
+            <link id="99" source="26" destination="32" delay="2.57" weight="514"/>
+            
+            <link id="100" source="32" destination="29" delay="2.7" weight="540"/>
+            <link id="101" source="29" destination="32" delay="2.7" weight="540"/>
+            
+            <link id="102" source="25" destination="27" delay="3.98" weight="796"/>
+            <link id="103" source="27" destination="25" delay="3.98" weight="796"/>
+            
+            <link id="104" source="26" destination="27" delay="2.97" weight="594"/>
+            <link id="105" source="27" destination="26" delay="2.97" weight="594"/>
+            
+            <link id="106" source="26" destination="28" delay="1.965" weight="393"/>
+            <link id="107" source="28" destination="26" delay="1.965" weight="393"/>
+            
+            <link id="108" source="26" destination="33" delay="3" weight="600"/>
+            <link id="109" source="33" destination="26" delay="3" weight="600"/>
+            
+            <link id="110" source="27" destination="34" delay="2.535" weight="507"/>
+            <link id="111" source="34" destination="27" delay="2.535" weight="507"/>
+            
+            <link id="112" source="28" destination="29" delay="1.295" weight="259"/>
+            <link id="113" source="29" destination="28" delay="1.295" weight="259"/>
+            
+            <link id="114" source="28" destination="35" delay="2.37" weight="474"/>
+            <link id="115" source="35" destination="28" delay="2.37" weight="474"/>
+            
+            <link id="116" source="29" destination="36" delay="2.76" weight="552"/>
+            <link id="117" source="36" destination="29" delay="2.76" weight="552"/>
+            
+            <link id="118" source="33" destination="34" delay="1.09" weight="218"/>
+            <link id="119" source="34" destination="33" delay="1.09" weight="218"/>
+            
+            <link id="120" source="37" destination="34" delay="1.635" weight="327"/>
+            <link id="121" source="34" destination="37" delay="1.635" weight="327"/>
+            
+            <link id="122" source="35" destination="33" delay="1.355" weight="271"/>
+            <link id="123" source="33" destination="35" delay="1.355" weight="271"/>
+            
+            <link id="124" source="36" destination="35" delay="2.96" weight="592"/>
+            <link id="125" source="35" destination="36" delay="2.96" weight="592"/>
+            
+            <link id="126" source="38" destination="36" delay="1.905" weight="381"/>
+            <link id="127" source="36" destination="38" delay="1.905" weight="381"/>
+            
+            <link id="128" source="39" destination="35" delay="2.28" weight="456"/>
+            <link id="129" source="35" destination="39" delay="2.28" weight="456"/>
+            
+            <link id="130" source="37" destination="39" delay="2.61" weight="522"/>
+            <link id="131" source="39" destination="37" delay="2.61" weight="522"/>
+            
+            <link id="132" source="37" destination="40" delay="3.6" weight="720"/>
+            <link id="133" source="40" destination="37" delay="3.6" weight="720"/>
+            
+            <link id="134" source="39" destination="38" delay="3.785" weight="757"/>
+            <link id="135" source="38" destination="39" delay="3.785" weight="757"/>
+            
+            <link id="136" source="39" destination="41" delay="2.67" weight="534"/>
+            <link id="137" source="41" destination="39" delay="2.67" weight="534"/>
+            
+            <link id="138" source="38" destination="42" delay="2.7" weight="540"/>
+            <link id="139" source="42" destination="38" delay="2.7" weight="540"/>
+            
+            <link id="140" source="38" destination="43" delay="2.1" weight="420"/>
+            <link id="141" source="43" destination="38" delay="2.1" weight="420"/>
+            
+            <link id="142" source="38" destination="44" delay="3.875" weight="775"/>
+            <link id="143" source="44" destination="38" delay="3.875" weight="775"/>
+            
+            <link id="144" source="42" destination="45" delay="3.61" weight="722"/>
+            <link id="145" source="45" destination="42" delay="3.61" weight="722"/>
+            
+            <link id="156" source="45" destination="46" delay="3.115" weight="623"/>
+            <link id="147" source="46" destination="45" delay="3.115" weight="623"/>
+            
+            <link id="148" source="40" destination="47" delay="3.915" weight="783"/>
+            <link id="149" source="47" destination="40" delay="3.915" weight="783"/>
+            
+            <link id="150" source="40" destination="48" delay="7.5" weight="1500"/>
+            <link id="151" source="48" destination="40" delay="7.5" weight="1500"/>
+            
+            <link id="152" source="41" destination="43" delay="1.88" weight="376"/>
+            <link id="153" source="43" destination="41" delay="1.88" weight="376"/>
+            
+            <link id="154" source="41" destination="47" delay="2" weight="400"/>
+            <link id="155" source="47" destination="41" delay="2" weight="400"/>
+            
+            <link id="156" source="43" destination="49" delay="3.34" weight="668"/>
+            <link id="157" source="49" destination="43" delay="3.34" weight="668"/>
+            
+            <link id="158" source="47" destination="50" delay="2.755" weight="551"/>
+            <link id="159" source="50" destination="47" delay="2.755" weight="551"/>
+            
+            <link id="160" source="46" destination="44" delay="6.065" weight="1213"/>
+            <link id="161" source="44" destination="46" delay="6.065" weight="1213"/>
+            
+            <link id="162" source="44" destination="49" delay="4.095" weight="819"/>
+            <link id="163" source="49" destination="44" delay="4.095" weight="819"/>
+            
+            <link id="164" source="49" destination="50" delay="2.37" weight="474"/>
+            <link id="165" source="50" destination="49" delay="2.37" weight="474"/>
+            
+            <link id="166" source="48" destination="50" delay="6.045" weight="1209"/>
+            <link id="167" source="50" destination="48" delay="6.045" weight="1209"/>
+        </links>
+             
+                   
+</root>
